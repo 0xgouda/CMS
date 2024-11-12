@@ -1,0 +1,62 @@
+<!-- duplicated with page-list TODO -->
+
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+  <!-- Content Header (Page header) -->
+  <section class="content-header">
+    <div class="container-fluid">
+      <div class="row mb-2">
+        <div class="col-sm-6">
+          <h1>Edit</h1>
+        </div>
+      </div>
+    </div>
+    <!-- /.container-fluid -->
+  </section>
+
+  <!-- Main content -->
+  <section class="content">
+    <!-- Default box -->
+    <div class="card">
+      <div class="card-body p-0">
+        <div class="container my-3">
+          <?php if (isset($_GET['status']) && $_GET['status']): ?>
+          <span class="text-success">Updated Successfully</span>
+          <?php elseif (isset($_GEt['status'])): ?>
+          <span class="text-danger">Update Failed</span>
+          <?php endif; ?>
+          <form method="POST" action="/admin/">
+            <input type="hidden" name="action" value="update" />
+            <input type="hidden" name="id" value="<?= $page->id ?>" />
+            <div class="mb-3">
+              <label for="title" class="form-label">Title</label>
+              <input
+                type="text"
+                class="form-control"
+                id="title"
+                name="title"
+                value="<?= $page->title ?>"
+              />
+            </div>
+            <div class="mb-3">
+              <label for="content" class="form-label">Content</label>
+              <textarea
+                class="form-control"
+                id="content"
+                name="content"
+                rows="5"
+              >
+<?= $page->content ?></textarea
+              >
+            </div>
+            <button type="submit" class="btn btn-primary">Save</button>
+          </form>
+        </div>
+      </div>
+      <!-- /.card-body -->
+    </div>
+    <!-- /.card -->
+  </section>
+  <!-- /.content -->
+</div>
+<!-- /.content-wrapper -->

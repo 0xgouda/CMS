@@ -1,0 +1,13 @@
+RewriteEngine on
+RewriteBase /
+
+# Rule for /admin requests
+RewriteCond %{REQUEST_URI} ^/admin/(.*)
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^admin/(.*)$ /admin/index.php?section=$1 [QSA,L]
+
+# General rule for other requests
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule (.+) /index.php?section=$1 [L]
